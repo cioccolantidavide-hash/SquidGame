@@ -1,7 +1,7 @@
-public class Dalgona extends MiniGioco
+public class BlindFoldRun extends MiniGioco
 {
-	String nomeGioco = "Dalgona";
-	public Dalgona(String difficolta, int punteggio, int numeroPartecipanti)
+	String nomeGioco = "BlindFoldRun";
+	public BlindFoldRun(String difficolta, int punteggio, int numeroPartecipanti)
 	{
 		this.difficolta = difficolta;
 		this.punteggio = punteggio;
@@ -25,5 +25,4 @@ public class Dalgona extends MiniGioco
 	}
 
 }
-
 

@@ -10,6 +10,14 @@ public class Partecipante
 		this.energia = energia;
 		this.punteggioIniziale = punteggioIniziale;
 	}
+	public void aggiungiPunteggio(int punteggioGuadagnato)
+	{
+		this.punteggioIniziale = this.punteggioIniziale + punteggioGuadagnato;
+	}
+	public void sottraiEnergia()
+	{
+		this.energia= this.energia - 10;
+	}
 	public void setNome(String nome)
 	{
 		this.nome = nome;		
