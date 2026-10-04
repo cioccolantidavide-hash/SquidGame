@@ -1,26 +1,27 @@
 public class Dalgona extends MiniGioco
 {
 	String nomeGioco = "Dalgona";
-	public Dalgona(String difficolta, int punteggio, int numeroPartecipanti)
+	public Dalgona(String difficolta, int punteggio)
 	{
 		this.difficolta = difficolta;
 		this.punteggio = punteggio;
-		this.numeroPartecipanti = numeroPartecipanti;
 	}
 	@Override
 	void assegnaPunteggio()
 	{
-		for(int i=0; i<numeroPartecipanti; i++)
+		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
+		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
 		{
-			listaPartecipanti[i].aggiungiPunteggio(punteggio);
+			this.listaPartecipanti.getPartecipante(elenco[i]).aggiungiPunteggio(punteggio);
 		}
 	}
 	@Override
 	void consumaEnergia()
 	{
-		for(int i=0; i<numeroPartecipanti; i++)
+		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
+		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
 		{
-			listaPartecipanti[i].sottraiEnergia();
+			this.listaPartecipanti.getPartecipante(elenco[i]).sottraiEnergia();
 		}
 	}
 

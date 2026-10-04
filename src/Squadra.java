@@ -2,9 +2,7 @@ import java.util.ArrayList;
 public class Squadra
 {
 	private String nome;
-	private int dimensioneSquadra;
 	private ArrayList<Partecipante> listaPartecipanti = new ArrayList<Partecipante>();
-	private int indiceLista = 0;
 /*	public Squadra(String nome, int dimensioneSquadra)
 	{
 		this.nome = nome;
@@ -13,7 +11,7 @@ public class Squadra
 */	public int totalePunteggio()
 	{
 		int totale = 0;
-		for(int i=0; i<dimensioneSquadra; i++)
+		for(int i=0; i<listaPartecipanti.size(); i++)
 		{
 			totale = totale + listaPartecipanti.get(i).getPunteggioIniziale();
 		}
@@ -21,20 +19,25 @@ public class Squadra
 	}
 	public void aggiungiPartecipante(Partecipante partecipante)
 	{
-		if(indiceLista < dimensioneSquadra)
-		{
-			System.out.println("ERRORE squadra piena");
-			return;
-		}
-		this.listaPartecipanti.set(indiceLista, partecipante);
-		this.indiceLista++;
+		this.listaPartecipanti.add(partecipante);
 	}
-	public Partecipante getPartecipante(int indicePartecipante)
+	public Partecipante getPartecipante(int nome)
 	{
-		if(indicePartecipante < dimensioneSquadra)
-		return this.listaPartecipanti.get(indicePartecipante); 
-		else System.out.println("errore indice maggiore di dimensione squadra");
+		for(int i=0; i<listaPartecipanti.size();i++)
+		{
+			if(listaPartecipanti.get(i).getNome() == nome) return listaPartecipanti.get(i);
+		}
 		return null;
+	}
+	public int[] getTuttiNomiPartecipanti()
+	{
+		int dimensione = listaPartecipanti.size();
+		int[] elenco = new int[dimensione];
+		for(int i=0; i<dimensione; i++)
+		{
+			elenco[i] = listaPartecipanti.get(i).getNome();
+		}
+		return elenco;
 	}
 	public String getNome()
 	{
@@ -42,14 +45,11 @@ public class Squadra
 	}
 	public int getDimensioneSquadra()
 	{
-		return this.dimensioneSquadra;
+		return this.listaPartecipanti.size();
 	}
 	public void setNome(String nome)
 	{
 		this.nome = nome;
 	}
-	public void setDimensioneSquadra(int dimensioneSquadra)
-	{
-		this.dimensioneSquadra = dimensioneSquadra;
-	}
 }
+ 

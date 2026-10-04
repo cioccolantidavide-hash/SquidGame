@@ -1,12 +1,10 @@
-import java.util.ArrayList;
+
 abstract class MiniGioco
 {
 	String nomeGioco;
 	String difficolta;
 	int punteggio;
-	int numeroPartecipanti;
-	int indiceLista = 0;
-	ArrayList<Partecipante> listaPartecipanti = new ArrayList<Partecipante>();
+	Squadra listaPartecipanti = new Squadra();
 	abstract void consumaEnergia();
 	abstract void assegnaPunteggio();
 	String getNomeGioco()
@@ -17,13 +15,9 @@ abstract class MiniGioco
 	{
 		return punteggio;
 	}
-	int getNumeroPartecipanti()
+	Partecipante getPartecipante(int nome)
 	{
-		return numeroPartecipanti;
-	}
-	Partecipante getPartecipante(int indice)
-	{
-		return listaPartecipanti.get(indice);
+		return this.listaPartecipanti.getPartecipante(nome);
 	}
 	void setNomeGioco(String nomeGioco)
 	{
@@ -33,13 +27,9 @@ abstract class MiniGioco
 	{
 		this.punteggio = punteggio;
 	}
-	void setNumeroPartecipanti()
-	{
-		this.numeroPartecipanti = numeroPartecipanti;
-	}
 	void aggiungiPartecipante(Partecipante partecipante)
 	{
-		this.listaPartecipanti.set(indiceLista,partecipante);
+		this.listaPartecipanti.aggiungiPartecipante(partecipante);
 	}
 
 

@@ -5,22 +5,24 @@ public class TugOfWar extends MiniGioco
 	{
 		this.difficolta = difficolta;
 		this.punteggio = punteggio;
-		this.numeroPartecipanti = numeroPartecipanti;
+		
 	}
 	@Override
 	void assegnaPunteggio()
 	{
-		for(int i=0; i<numeroPartecipanti; i++)
+		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
+		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
 		{
-			listaPartecipanti[i].aggiungiPunteggio(punteggio);
+			this.listaPartecipanti.getPartecipante(elenco[i]).aggiungiPunteggio(punteggio);
 		}
 	}
 	@Override
 	void consumaEnergia()
 	{
-		for(int i=0; i<numeroPartecipanti; i++)
+		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
+		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
 		{
-			listaPartecipanti[i].sottraiEnergia();
+			this.listaPartecipanti.getPartecipante(elenco[i]).sottraiEnergia();
 		}
 	}
 
