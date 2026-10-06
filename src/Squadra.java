@@ -3,12 +3,7 @@ public class Squadra
 {
 	private String nome;
 	private ArrayList<Partecipante> listaPartecipanti = new ArrayList<Partecipante>();
-/*	public Squadra(String nome, int dimensioneSquadra)
-	{
-		this.nome = nome;
-		this.dimensioneSquadra = dimensioneSquadra;
-	}
-*/	public int totalePunteggio()
+	public int totalePunteggio()
 	{
 		int totale = 0;
 		for(int i=0; i<listaPartecipanti.size(); i++)
@@ -21,18 +16,18 @@ public class Squadra
 	{
 		this.listaPartecipanti.add(partecipante);
 	}
-	public Partecipante getPartecipante(int nome)
+	public Partecipante getPartecipante(String nome)
 	{
 		for(int i=0; i<listaPartecipanti.size();i++)
 		{
-			if(listaPartecipanti.get(i).getNome() == nome) return listaPartecipanti.get(i);
+			if(listaPartecipanti.get(i).getNome().equals(nome)) return listaPartecipanti.get(i);
 		}
 		return null;
 	}
-	public int[] getTuttiNomiPartecipanti()
+	public String[] getTuttiNomiPartecipanti()
 	{
 		int dimensione = listaPartecipanti.size();
-		int[] elenco = new int[dimensione];
+		String[] elenco = new String[dimensione];
 		for(int i=0; i<dimensione; i++)
 		{
 			elenco[i] = listaPartecipanti.get(i).getNome();

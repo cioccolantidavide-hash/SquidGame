@@ -1,28 +1,29 @@
+import java.util.ArrayList;
 public class Dalgona extends MiniGioco
 {
 	String nomeGioco = "Dalgona";
-	public Dalgona(String difficolta, int punteggio)
+	public Dalgona(String difficolta, int punteggio, ArrayList<Partecipante> listaPartecipanti)
 	{
 		this.difficolta = difficolta;
 		this.punteggio = punteggio;
+		this.listaPartecipanti = listaPartecipanti;
 	}
 	@Override
 	void assegnaPunteggio()
 	{
-		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
-		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
+		for(int i=0; i<this.listaPartecipanti.size(); i++)
 		{
-			this.listaPartecipanti.getPartecipante(elenco[i]).aggiungiPunteggio(punteggio);
+			this.listaPartecipanti.get(i).aggiungiPunteggio(this.punteggio);
 		}
 	}
 	@Override
 	void consumaEnergia()
 	{
-		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
-		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
+		for(int i=0; i<this.listaPartecipanti.size(); i++)
 		{
-			this.listaPartecipanti.getPartecipante(elenco[i]).sottraiEnergia();
+			this.listaPartecipanti.get(i).sottraiEnergia();
 		}
+
 	}
 
 }

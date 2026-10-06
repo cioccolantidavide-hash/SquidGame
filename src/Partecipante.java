@@ -1,15 +1,18 @@
 public class Partecipante
 {
-	private int nome;
+	private String nome;
 	private  int  energia;
 	private int punteggioIniziale;
 
-	/*public Partecipante(int nome, int energia, int punteggioIniziale)
+	public Partecipante(String nome, int energia, int punteggioIniziale)
 	{
 		this.nome = nome;
 		this.energia = energia;
 		this.punteggioIniziale = punteggioIniziale;
-	}*/
+	}
+	public Partecipante()
+	{
+	}
 	public void aggiungiPunteggio(int punteggioGuadagnato)
 	{
 		this.punteggioIniziale = this.punteggioIniziale + punteggioGuadagnato;
@@ -18,11 +21,11 @@ public class Partecipante
 	{
 		this.energia= this.energia - 10;
 	}
-	public void setNome(int nome)
+	public void setNome(String nome)
 	{
 		this.nome = nome;		
 	}
-	public int getNome()
+	public String getNome()
 	{
 		return this.nome;
 	}
