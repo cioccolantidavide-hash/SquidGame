@@ -1,28 +1,23 @@
 public class Marbles extends MiniGioco
 {
 	String nomeGioco = "Marbles";
-	public Marbles(String difficolta, int punteggio, int numeroPartecipanti)
-	{
-		this.difficolta = difficolta;
-		this.punteggio = punteggio;
-	}
+
 	@Override
 	void assegnaPunteggio()
 	{
-		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
-		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
+		for(int i=0; i<this.listaPartecipanti.size(); i++)
 		{
-			this.listaPartecipanti.getPartecipante(elenco[i]).aggiungiPunteggio(punteggio);
+			this.listaPartecipanti.get(i).aggiungiPunteggio(this.punteggio);
 		}
 	}
 	@Override
 	void consumaEnergia()
 	{
-		int elenco[] = listaPartecipanti.getTuttiNomiPartecipanti();
-		for(int i=0; i<listaPartecipanti.getDimensioneSquadra(); i++)
+		for(int i=0; i<this.listaPartecipanti.size(); i++)
 		{
-			this.listaPartecipanti.getPartecipante(elenco[i]).sottraiEnergia();
+			this.listaPartecipanti.get(i).sottraiEnergia();
 		}
+
 	}
 
 }

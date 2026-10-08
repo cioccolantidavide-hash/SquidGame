@@ -25,6 +25,10 @@ abstract class MiniGioco
 		}
 		return null;
 	}
+	String getDifficolta()
+	{
+		return this.difficolta;
+	}
 	void setNomeGioco(String nomeGioco)
 	{
 		this.nomeGioco = nomeGioco;
@@ -32,6 +36,10 @@ abstract class MiniGioco
 	void setPunteggio(int punteggio)
 	{
 		this.punteggio = punteggio;
+	}
+	void setDifficolta(String difficolta)
+	{
+		this.difficolta = difficolta;
 	}
 	void aggiungiPartecipante(Partecipante partecipante)
 	{

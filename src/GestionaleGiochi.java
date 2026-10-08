@@ -9,7 +9,8 @@ class GestionaleGiochi implements GestoreGiochi
 	public void caricaGiochi(File file)
 	{	
 		String riga;
-		String[] riganNomi, rigaDati;
+		String rigaDivisaNomi,rigaDivisaDati;
+		String[] listaNomi, listaDati;
 		try(Scanner scanner = new Scanner(this.file))
 		{
 			riga = scanner.nextLine();
@@ -17,7 +18,49 @@ class GestionaleGiochi implements GestoreGiochi
 			{
 				riga = scanner.nextLine();
 			}
-			riga = scanner.nextLine();
+			while(scanner.hasNextLine())
+			{
+				riga = scanner.nextLine();
+				rigaDivisaDati = riga.substring(0,riga.indexOf("["));
+				rigaDivisaNomi = riga.substring(riga.indexOf("[")+1, riga.indexOf("]"));
+				listaDati = rigaDivisaDati.split(",");
+				listaNomi = rigaDivisaNomi.split(",");
+				switch(listaDati[0])
+				{
+					case"Dalgona":
+						Dalgona dalgona = new Dalgona();
+						miniGiochi.add(dalgona);
+						break;
+					case"BlindFoldRun":
+						BlindFoldRun blindFoldRun = new BlindFoldRun();
+						miniGiochi.add(blindFoldRun);
+						break;
+					case"GlassBridge":
+						GlassBridge glassBridge = new GlassBridge();
+						miniGiochi.add(glassBridge);
+						break;
+					case"Marbles":
+						Marbles marbles = new Marbles();
+						miniGiochi.add(marbles);
+						break;
+					case"TugOfWar":
+						TugOfWar tugOfWar = new TugOfWar();
+						miniGiochi.add(tugOfWar);
+						break;
+					default:
+						System.out.println("errore minigioco non esistente!");
+				}
+				miniGiochi.get(miniGiochi.size()-1).setDifficolta(listaDati[1]);
+				miniGiochi.get(miniGiochi.size()-1).setPunteggio(Integer.parseInt(listaDati[2]));
+				for(int i=0;i<listaNomi.length; i++)
+				{
+					for(int j=0; j<listaPartecipanti.size(); j++)
+					{
+						if(listaPartecipanti.get(j).getNome().equals(listaNomi[i]))
+							miniGiochi.get(miniGiochi.size()-1).aggiungiPartecipante(listaPartecipanti.get(j));
+					}
+				}
+			}
 		
 		}
 		catch(FileNotFoundException e)
@@ -37,6 +80,7 @@ class GestionaleGiochi implements GestoreGiochi
 			while(scanner.hasNextLine())
 			{
 				riga = scanner.nextLine();
+				if(riga.contains("#")) return; 
 				rigaDivisa = riga.split(",");
 				nome = rigaDivisa[0];
 				energia = rigaDivisa[1];
@@ -53,5 +97,6 @@ class GestionaleGiochi implements GestoreGiochi
 	}
 	public int[] ottieniRisultati()
 	{
+
 	}
 }
