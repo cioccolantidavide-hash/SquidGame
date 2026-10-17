@@ -24,15 +24,14 @@ public class Squadra
 		}
 		return null;
 	}
-	public String[] getTuttiNomiPartecipanti()
+	public void getTuttiNomiPartecipan()
 	{
 		int dimensione = listaPartecipanti.size();
-		String[] elenco = new String[dimensione];
 		for(int i=0; i<dimensione; i++)
 		{
-			elenco[i] = listaPartecipanti.get(i).getNome();
+			System.out.print(listaPartecipanti.get(i).getNome());
+			if(i<dimensione-1) System.out.print(",");
 		}
-		return elenco;
 	}
 	public String getNome()
 	{

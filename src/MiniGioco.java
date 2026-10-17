@@ -7,6 +7,16 @@ abstract class MiniGioco
 	ArrayList<Partecipante> listaPartecipanti = new ArrayList<>();
 	abstract void consumaEnergia();
 	abstract void assegnaPunteggio();
+	void getStatistichePartecipanti()
+	{
+		System.out.print("[");
+		for(int i=0; i<listaPartecipanti.size(); i++)
+		{
+			System.out.print(listaPartecipanti.get(i).getNome() +":"+ this.punteggio);
+			if(i<listaPartecipanti.size()-1) System.out.print(", ");
+		}
+		System.out.print("]");
+	}
 	String getNomeGioco()
 	{
 		return this.nomeGioco;
@@ -21,9 +31,13 @@ abstract class MiniGioco
 		for(int i=0; i<this.listaPartecipanti.size(); i++)
 		{
 			temp = this.listaPartecipanti.get(i);
-			if(temp.equals(nome)) return listaPartecipanti.get(i);
+			if(temp.getNome().equals(nome)) return listaPartecipanti.get(i);
 		}
 		return null;
+	}
+	int getDimensioneListaPartecipanti()
+	{
+		return this.listaPartecipanti.size();
 	}
 	String getDifficolta()
 	{
@@ -45,7 +59,7 @@ abstract class MiniGioco
 	{
 		this.listaPartecipanti.add(partecipante);
 	}
-
+	
 
 }
 

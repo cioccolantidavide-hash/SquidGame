@@ -1,8 +1,8 @@
-import java.io.File;
+
 interface GestoreGiochi
 {
 
-	void caricaGiochi(File file);
-	void registraPartecipanti(File file);
-	int[] ottieniRisultati();
+	void caricaGiochi();
+	void registraPartecipanti();
+	void  ottieniRisultati();
 }

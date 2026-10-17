@@ -1,7 +1,9 @@
 public class GlassBridge extends MiniGioco
 {
-	String nomeGioco = "GlassBridge";
-	
+	public GlassBridge()
+	{
+		this.nomeGioco = "GlassBridge";
+	}
 	@Override
 	void assegnaPunteggio()
 	{

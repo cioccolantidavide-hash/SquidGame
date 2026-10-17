@@ -1,7 +1,9 @@
 public class Marbles extends MiniGioco
 {
-	String nomeGioco = "Marbles";
-
+	public Marbles()
+	{
+		this.nomeGioco = "Marbles";
+	}
 	@Override
 	void assegnaPunteggio()
 	{

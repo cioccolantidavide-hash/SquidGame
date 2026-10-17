@@ -17,6 +17,10 @@ public class Partecipante
 	{
 		this.punteggioIniziale = this.punteggioIniziale + punteggioGuadagnato;
 	}
+	public void aggiungiEnergia(int energiaDaSommare)
+	{
+		this.energia = this.energia + energiaDaSommare;
+	}
 	public void sottraiEnergia()
 	{
 		this.energia= this.energia - 10;

@@ -1,7 +1,9 @@
 public class BlindFoldRun extends MiniGioco
 {
-	String nomeGioco = "BlindFoldRun";
-
+	public BlindFoldRun()
+	{
+		this.nomeGioco = "BlindFoldRun";
+	}
 	@Override
 	void assegnaPunteggio()
 	{

@@ -1,6 +1,9 @@
 public class TugOfWar extends MiniGioco
 {
-	String nomeGioco = "TugOfWar";
+	public TugOfWar()
+	{
+		this.nomeGioco = "TugOfWar";
+	}
 	@Override
 	void assegnaPunteggio()
 	{

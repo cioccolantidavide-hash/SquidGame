@@ -6,7 +6,7 @@ class GestionaleGiochi implements GestoreGiochi
 	ArrayList<Squadra> squadre = new ArrayList<Squadra>();
 	ArrayList<MiniGioco> miniGiochi = new ArrayList<>();
 	ArrayList<Partecipante> listaPartecipanti = new ArrayList<>();
-	public void caricaGiochi(File file)
+	public void caricaGiochi()
 	{	
 		String riga;
 		String rigaDivisaNomi,rigaDivisaDati;
@@ -21,6 +21,7 @@ class GestionaleGiochi implements GestoreGiochi
 			while(scanner.hasNextLine())
 			{
 				riga = scanner.nextLine();
+				if(riga.contains("#")) return;
 				rigaDivisaDati = riga.substring(0,riga.indexOf("["));
 				rigaDivisaNomi = riga.substring(riga.indexOf("[")+1, riga.indexOf("]"));
 				listaDati = rigaDivisaDati.split(",");
@@ -68,7 +69,40 @@ class GestionaleGiochi implements GestoreGiochi
 			System.out.println("file non trovato");
 		}
 	}
-	public void registraPartecipanti(File file)
+	public void registraSquadre()
+	{
+		String riga;
+		String rigaDivisaPartecipanti;
+		String nome;
+		try(Scanner scanner = new Scanner(this.file))
+		{
+			riga = scanner.nextLine();
+			while(riga.contains("###") == false)
+			{
+				riga = scanner.nextLine();
+			}
+			riga = scanner.nextLine();
+			while(riga.contains("###") == false)
+			{
+				riga = scanner.nextLine();
+			}
+			while(scanner.hasNextLine())
+			{
+				riga = scanner.nextLine();
+				if(riga.contains("#")) return; 
+				nome = riga.substring(0,riga.indexOf(",")).trim();
+				rigaDivisaPartecipanti = riga.substring(riga.indexOf("[")+1, riga.indexOf("]"));
+				
+			}
+			
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("errore lettura file");
+		}
+	}
+
+	public void registraPartecipanti()
 	{
 		String riga;
 		String[] rigaDivisa;
@@ -95,8 +129,39 @@ class GestionaleGiochi implements GestoreGiochi
 			System.out.println("errore lettura file");
 		}
 	}
-	public int[] ottieniRisultati()
+	public void  ottieniRisultati()
 	{
+		//task1
+		for(int i=0; i<listaPartecipanti.size(); i++)
+		{
+			listaPartecipanti.get(i).aggiungiEnergia(50);
+		}
+		for(int i=0; i<miniGiochi.size(); i++)
+		{
+			miniGiochi.get(i).assegnaPunteggio();
+			miniGiochi.get(i).consumaEnergia();
+		}
+		for(int i=0; i<listaPartecipanti.size(); i++)
+		{
+			System.out.println(listaPartecipanti.get(i).getNome() + "," + listaPartecipanti.get(i).getEnergia() +","+ listaPartecipanti.get(i).getPunteggioIniziale());
+		}
+		System.out.println("###");
+		//task2
+		for(int i=0; i<miniGiochi.size(); i++)
+		{
+			System.out.print(miniGiochi.get(i).getNomeGioco());
+			miniGiochi.get(i).getStatistichePartecipanti();
+			System.out.println("");
+		}
+		//task3
+		for(int i=0; i<squadre.size(); i++)
+		{
+			System.out.print(squadre.get(i).getNome() +":");
+			System.out.print(squadre.get(i).totalePunteggio() +",");
+			System.out.print("Partecipanti:[");
+			squadre.get(i).getTuttiNomiPartecipan();
+			System.out.print("]");
 
+		}
 	}
 }
